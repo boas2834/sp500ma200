@@ -13,8 +13,8 @@ Python 3.8.10
 
 #### Pip Updaten
 pip install --upgrade pip
-...
 
+#### Pip Version anzeigen
 pip --version
 pip 21.3.1 from /home/user/my-virtual-env/lib/python3.8/site-packages/pip (python 3.8)
 

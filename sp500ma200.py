@@ -31,8 +31,6 @@ def display_results(current_price, current_ma200, deviation_percentage, last_14_
     results = []
     results.append(f"S&P 500 Daten - {datetime.now().strftime('%Y-%m-%d')}")
     results.append(f".")
-    results.append(f"Erstellt auf SRV 192.168.1.50")
-    results.append(f".")
     results.append(f"Aktueller Wert: {current_price}")
     results.append(f"200-Tage-Gleitender-Durchschnitt (MA 200): {current_ma200}")
     results.append(f".")

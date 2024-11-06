@@ -59,10 +59,15 @@ def display_results(current_price, current_ma200, deviation_percentage, last_14_
     # Inhalte für die E-Mail zurückgeben
     return "\n".join(results)
 
-def send_email(content):
+def load_recipients(file_path):
+    # Einlesen der E-Mail-Empfänger aus einer Textdatei
+    with open(file_path, "r") as file:
+        recipients = [line.strip() for line in file if line.strip()]
+    return recipients
+
+def send_email(content, recipient_email):
     # E-Mail Konfiguration
     sender_email = "MAILADRESSE@domain.com"
-    receiver_email = "MAILADRESSE@domain.com"
     password = "HIER DAS PASSWORT "
 
     # E-Mail Inhalt
@@ -83,11 +88,19 @@ def send_email(content):
         server.login(sender_email, password)
         server.sendmail(sender_email, receiver_email, msg.as_string())
         server.close()
-        print("E-Mail erfolgreich gesendet!")
+        print(f"E-Mail erfolgreich an {recipient_email} gesendet!")
     except Exception as e:
-        print(f"Fehler beim Senden der E-Mail: {e}")
+        print(f"Fehler beim Senden der E-Mail an {recipient_email}: {e}")
+
+
+# Empfänger einlesen und E-Mail an jeden einzeln senden
+recipients = load_recipients("recipients.txt")
+for recipient in recipients:
+    send_email(email_content, recipient)
 
 # Skript ausführen
 current_price, current_ma200, deviation_percentage, last_14_days_deviation = get_sp500_data()
 email_content = display_results(current_price, current_ma200, deviation_percentage, last_14_days_deviation)
-send_email(email_content)
+
+
+

@@ -25,19 +25,21 @@ def get_sp500_data():
     deviation_percentage = last_14_days_deviation[-1]
     
     return current_price, current_ma200, deviation_percentage, last_14_days_deviation
-
 def display_results(current_price, current_ma200, deviation_percentage, last_14_days_deviation):
     # Ergebnisse auf dem Bildschirm anzeigen und gleichzeitig als E-Mail-Inhalt vorbereiten
     results = []
     results.append(f"S&P 500 Daten - {datetime.now().strftime('%Y-%m-%d')}")
     results.append(f"")
-    results.append(f"Aktueller Wert: {current_price}")
-    results.append(f"200-Tage-Gleitender-Durchschnitt (MA 200): {current_ma200}")
+    results.append(f"Erstellt auf SRV 192.168.1.50")
+    results.append(f"")
+    results.append(f"Aktueller Wert des SP500: {current_price:.2f}$")
+    results.append(f"200-Tage-Gleitender-Durchschnitt (MA 200): {current_ma200:.2f}$")
     results.append(f"")
     results.append(f"")
     results.append(f"Prozentuale Abweichung (heute): {deviation_percentage:.2f} %")
     results.append(f"")
     results.append(f"")
+
 
     # Kauf-/Verkauf-Empfehlung basierend auf heutiger Abweichung
     if deviation_percentage < 0:

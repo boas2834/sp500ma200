@@ -25,6 +25,8 @@ def get_sp500_data():
     deviation_percentage = last_14_days_deviation[-1]
     
     return current_price, current_ma200, deviation_percentage, last_14_days_deviation
+
+
 def display_results(current_price, current_ma200, deviation_percentage, last_14_days_deviation):
     # Ergebnisse auf dem Bildschirm anzeigen und gleichzeitig als E-Mail-Inhalt vorbereiten
     results = []

@@ -1,0 +1,3 @@
+receiver1@domain.com
+receiver2@domain.com
+receiver3@domain.com

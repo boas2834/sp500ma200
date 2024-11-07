@@ -26,4 +26,4 @@ pip install yfinance
 
 ### Chronjob dazu:
 chrontab -e
-35 22 * * * /home/pi/sp500-venv/bin/python3 /home/pi/scripte/sp500ma200.py
+22 22 * * * /PathTo/run.sh > /PathTo/sp500maillog.log 2>&1

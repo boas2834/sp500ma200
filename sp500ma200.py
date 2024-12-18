@@ -45,15 +45,23 @@ def display_results(current_price, current_ma200, deviation_percentage, last_14_
 
     # Kauf-/Verkauf-Empfehlung basierend auf heutiger Abweichung
     if deviation_percentage < 0:
-        results.append("Verkaufen!")
+        results.append("Verkaufssignal")
+    elif 0 <= deviation_percentage < 10:
+        results.append("Halten")
     else:
-        results.append("Kaufen!")
+        results.append("Kaufsignal")
+
 
     # Trend der letzten 14 Tage mit Handlungsempfehlung hinzufügen
     results.append("\nTrend der prozentualen Abweichung der letzten 14 Tage:")
     for i, deviation in enumerate(last_14_days_deviation, start=1):
         date = (datetime.now() - pd.Timedelta(days=14-i)).strftime('%Y-%m-%d')
-        recommendation = "Verkaufen!" if deviation < 0 else "Kaufen!"
+       if deviation < 0:
+            recommendation = "Verkaufssignal"
+        elif 0 <= deviation < 10:
+            recommendation = "Halten"
+        else:
+            recommendation = "Kaufsignal"
         results.append(f"Tag {i} ({date}): {deviation:.2f} % - {recommendation}")
 
     # Ausgabe auf dem Bildschirm
